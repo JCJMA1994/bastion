@@ -26,7 +26,7 @@ BattleState _state() => BattleState(board: const Board(), squads: [
 void main() {
   test('la IA juega su turno y devuelve el control al jugador', () {
     final state = _state();
-    BattleController(BattleEngine(state: state, dice: SeededDice(3)))..start();
+    BattleController(BattleEngine(state: state, dice: SeededDice(3))).start();
     // Si empezó el enemigo, ya jugó; si empezó el jugador, es su turno.
     expect(state.activeSide, Side.jugador);
   });

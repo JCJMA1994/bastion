@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flame/components.dart';
-import 'package:flame/text.dart';
 
 import '../../theme/bastion_tokens.dart';
 import '../bastion_game.dart';

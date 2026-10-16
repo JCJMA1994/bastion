@@ -229,10 +229,11 @@ void main() {
     expect(s4, 200);
     expect(view['status'], 'despliegue');
     final (s6, deployed) = await call('POST', '/matches/$code/deployment',
-        body: {'centers': {}}, token: guestToken);
+        body: {'centers': <String, Object?>{}}, token: guestToken);
     expect(s6, 200);
     expect(deployed['status'], 'despliegue');
-    final (s5, error) = await call('POST', '/matches', body: {'roster': {}});
+    final (s5, error) =
+        await call('POST', '/matches', body: {'roster': <String, Object?>{}});
     expect(s5, 400);
     expect(error['error'], 'roster_squads');
   });

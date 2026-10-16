@@ -29,7 +29,7 @@ Future<({bool diagnostics, bool analytics})?> showConsentDialog(
               SwitchListTile(
                 contentPadding: EdgeInsets.zero,
                 value: diagnostics,
-                activeColor: BastionColors.laton,
+                activeThumbColor: BastionColors.laton,
                 onChanged: (v) => setState(() => diagnostics = v),
                 title: Text('Informes de errores', style: BastionText.cuerpo()),
                 subtitle: Text('Qué falló y dónde, para arreglarlo.',
@@ -38,7 +38,7 @@ Future<({bool diagnostics, bool analytics})?> showConsentDialog(
               SwitchListTile(
                 contentPadding: EdgeInsets.zero,
                 value: analytics,
-                activeColor: BastionColors.laton,
+                activeThumbColor: BastionColors.laton,
                 onChanged: (v) => setState(() => analytics = v),
                 title: Text('Estadísticas de uso', style: BastionText.cuerpo()),
                 subtitle: Text(

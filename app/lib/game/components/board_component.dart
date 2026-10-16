@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
-import 'package:rules_engine/rules_engine.dart' show Objective, Side, Vec2;
+import 'package:rules_engine/rules_engine.dart' show Objective, Vec2;
 
 import '../../theme/bastion_tokens.dart';
 import '../bastion_game.dart';

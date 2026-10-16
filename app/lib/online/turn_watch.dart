@@ -106,10 +106,10 @@ class BackgroundTurnWatcher implements TurnWatcher {
       await prefs.setInt(_notifiedKey, view.version);
       final plugin = await _notifications();
       await plugin.show(
-        ticket.code.hashCode & 0x7fffffff,
-        'Bastión · partida ${ticket.code}',
-        message,
-        const NotificationDetails(
+        id: ticket.code.hashCode & 0x7fffffff,
+        title: 'Bastión · partida ${ticket.code}',
+        body: message,
+        notificationDetails: const NotificationDetails(
           android: AndroidNotificationDetails(
             'turnos',
             'Turnos multijugador',
@@ -128,10 +128,12 @@ class BackgroundTurnWatcher implements TurnWatcher {
 
   static Future<FlutterLocalNotificationsPlugin> _notifications() async {
     final plugin = FlutterLocalNotificationsPlugin();
-    await plugin.initialize(const InitializationSettings(
-      android: AndroidInitializationSettings('@mipmap/ic_launcher'),
-      iOS: DarwinInitializationSettings(),
-    ));
+    await plugin.initialize(
+      settings: const InitializationSettings(
+        android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+        iOS: DarwinInitializationSettings(),
+      ),
+    );
     return plugin;
   }
 }

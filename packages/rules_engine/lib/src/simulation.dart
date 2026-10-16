@@ -194,7 +194,7 @@ final class Simulator {
         }
       }
       stats
-        ..runs++
+        ..runs += 1
         ..totalDays += run.day;
       switch (run.status) {
         case CampaignStatus.victoria:

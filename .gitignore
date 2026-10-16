@@ -6,3 +6,5 @@ pubspec.lock
 app/android/local.properties
 packages/server/partidas/
 packages/server/telemetria/
+__pycache__/
+*.pyc

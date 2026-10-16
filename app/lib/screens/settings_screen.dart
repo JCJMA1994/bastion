@@ -41,7 +41,7 @@ class SettingsScreen extends StatelessWidget {
                 SwitchListTile(
                   title: Text('Efectos de sonido', style: BastionText.cuerpo()),
                   value: settings.soundOn,
-                  activeColor: BastionColors.laton,
+                  activeThumbColor: BastionColors.laton,
                   onChanged: (v) => settings.soundOn = v,
                 ),
                 ListTile(
@@ -103,7 +103,7 @@ class SettingsScreen extends StatelessWidget {
                   subtitle: Text('Aumenta el texto de toda la app.',
                       style: BastionText.detalle()),
                   value: settings.largeText,
-                  activeColor: BastionColors.laton,
+                  activeThumbColor: BastionColors.laton,
                   onChanged: (v) => settings.largeText = v,
                 ),
                 SwitchListTile(
@@ -113,7 +113,7 @@ class SettingsScreen extends StatelessWidget {
                       'Se activa sola con el lector de pantalla.',
                       style: BastionText.detalle()),
                   value: settings.boardAsText,
-                  activeColor: BastionColors.laton,
+                  activeThumbColor: BastionColors.laton,
                   onChanged: (v) => settings.boardAsText = v,
                 ),
                 _Section('PRIVACIDAD'),
@@ -122,7 +122,7 @@ class SettingsScreen extends StatelessWidget {
                   subtitle: Text('Qué falló y dónde, para arreglarlo.',
                       style: BastionText.detalle()),
                   value: settings.diagnosticsConsent,
-                  activeColor: BastionColors.laton,
+                  activeThumbColor: BastionColors.laton,
                   onChanged: (v) => settings.setConsent(
                       diagnostics: v, analytics: settings.analyticsConsent),
                 ),
@@ -131,7 +131,7 @@ class SettingsScreen extends StatelessWidget {
                   subtitle: Text('Pantallas y resultados de batallas, anónimos.',
                       style: BastionText.detalle()),
                   value: settings.analyticsConsent,
-                  activeColor: BastionColors.laton,
+                  activeThumbColor: BastionColors.laton,
                   onChanged: (v) => settings.setConsent(
                       diagnostics: settings.diagnosticsConsent, analytics: v),
                 ),
