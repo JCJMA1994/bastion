@@ -74,19 +74,22 @@ class _DeploymentScreenState extends State<DeploymentScreen> {
                             child: ListView(
                               children: [
                                 for (final s in _controller.ownSquads)
-                                  ListTile(
-                                    dense: true,
-                                    minTileHeight: BastionSpace.toqueMin,
-                                    selected: _controller.selectedSquadId == s.id,
-                                    selectedTileColor: BastionColors.latonVelo,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(
-                                            BastionRadius.m)),
-                                    title: Text(s.profile.name,
-                                        style: BastionText.titulo()),
-                                    subtitle: Text('${s.aliveCount} soldados',
-                                        style: BastionText.detalle()),
-                                    onTap: () => _controller.select(s.id),
+                                  Material(
+                                    type: MaterialType.transparency,
+                                    child: ListTile(
+                                      dense: true,
+                                      minTileHeight: BastionSpace.toqueMin,
+                                      selected: _controller.selectedSquadId == s.id,
+                                      selectedTileColor: BastionColors.latonVelo,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                              BastionRadius.m)),
+                                      title: Text(s.profile.name,
+                                          style: BastionText.titulo()),
+                                      subtitle: Text('${s.aliveCount} soldados',
+                                          style: BastionText.detalle()),
+                                      onTap: () => _controller.select(s.id),
+                                    ),
                                   ),
                               ],
                             ),

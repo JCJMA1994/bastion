@@ -8,5 +8,5 @@
   "maintenance_message": "",
   "ai_use_orders": true,
   "campaign_starting_requisas": 60,
-  "art_style": "vector"
+  "art_style": "sprites"
 }

@@ -63,15 +63,17 @@ class BastionPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(BastionSpace.s3),
-      decoration: BoxDecoration(
-        color: highlighted ? BastionColors.latonVelo : BastionColors.mesa700,
-        border: Border.all(
+    return Material(
+      color: highlighted ? BastionColors.latonVelo : BastionColors.mesa700,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(
             color: highlighted ? BastionColors.laton : BastionColors.mesa600),
         borderRadius: BorderRadius.circular(BastionRadius.m),
       ),
-      child: child,
+      child: Padding(
+        padding: const EdgeInsets.all(BastionSpace.s3),
+        child: child,
+      ),
     );
   }
 }
