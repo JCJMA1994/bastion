@@ -10,7 +10,7 @@ COPY data data
 RUN printf 'name: bastion_workspace\npublish_to: none\nenvironment:\n  sdk: ^3.6.0\nworkspace:\n  - packages/rules_engine\n  - packages/server\n' > pubspec.yaml
 
 WORKDIR /src/packages/server
-RUN dart pub get && dart compile exe bin/server.dart -o /out/server
+RUN mkdir -p /out && dart pub get && dart compile exe bin/server.dart -o /out/server
 
 FROM scratch
 COPY --from=build /runtime/ /
