@@ -8,6 +8,7 @@
             "name": "bastion",
             "cwd": "app",
             "program": "lib/main.dart",
+            "args": ["--dart-define-from-file=../env/dev.json"],
             "request": "launch",
             "type": "dart"
         },
@@ -15,6 +16,7 @@
             "name": "app",
             "cwd": "app",
             "program": "lib/main.dart",
+            "args": ["--dart-define-from-file=../env/dev.json"],
             "request": "launch",
             "type": "dart"
         },

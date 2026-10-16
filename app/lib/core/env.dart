@@ -9,7 +9,7 @@ abstract final class Env {
 
   /// Versión de la app; la fija CI con `--dart-define=APP_VERSION=…`.
   static const appVersion =
-      String.fromEnvironment('APP_VERSION', defaultValue: '0.0.0-dev');
+      String.fromEnvironment('APP_VERSION', defaultValue: '0.1.0-dev');
   static const telemetryEnabled =
       bool.fromEnvironment('TELEMETRY', defaultValue: true);
 
