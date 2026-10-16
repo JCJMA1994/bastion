@@ -1,0 +1,5 @@
+{
+  "ENV": "prod",
+  "SERVER_URL": "https://api.bastion.example.com",
+  "TELEMETRY": true
+}

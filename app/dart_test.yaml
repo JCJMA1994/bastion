@@ -1,0 +1,4 @@
+tags:
+  # Pruebas de captura. Generar la referencia una vez (en Linux, como la CI):
+  #   flutter test --tags golden --update-goldens
+  golden:

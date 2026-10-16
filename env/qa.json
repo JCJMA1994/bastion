@@ -1,0 +1,5 @@
+{
+  "ENV": "qa",
+  "SERVER_URL": "https://qa.bastion.example.com",
+  "TELEMETRY": true
+}

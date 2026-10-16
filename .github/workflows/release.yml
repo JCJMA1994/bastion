@@ -1,0 +1,153 @@
+name: Release
+
+# Publica una versión al empujar una etiqueta v1.2.3, o a mano eligiendo el
+# entorno. Compila la app por entorno, construye la imagen del servidor y,
+# si hay secretos configurados, firma, sube a Google Play y despliega.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      env:
+        description: Entorno
+        type: choice
+        options: [dev, qa, prod]
+        default: qa
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    outputs:
+      name: ${{ steps.v.outputs.name }}
+      envs: ${{ steps.v.outputs.envs }}
+    steps:
+      - id: v
+        run: |
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            echo "name=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+            echo 'envs=["qa","prod"]' >> "$GITHUB_OUTPUT"
+          else
+            echo "name=0.0.${GITHUB_RUN_NUMBER}" >> "$GITHUB_OUTPUT"
+            echo "envs=[\"${{ inputs.env }}\"]" >> "$GITHUB_OUTPUT"
+          fi
+
+  android:
+    needs: version
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        env: ${{ fromJson(needs.version.outputs.envs) }}
+    env:
+      VERSION: ${{ needs.version.outputs.name }}
+      # Los secretos no se pueden usar en `if`; se exponen como banderas.
+      HAS_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+      HAS_PLAY: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Carpetas de plataforma
+        working-directory: app
+        # Si aún no están en el repositorio, se generan (sin firma de release).
+        run: '[ -d android ] || flutter create . --platforms=android --project-name bastion'
+      - name: Firma
+        if: env.HAS_KEYSTORE == 'true'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        working-directory: app/android
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 -d > app/release.jks
+          cat > key.properties <<PROPS
+          storeFile=release.jks
+          storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}
+          keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}
+          PROPS
+      - run: flutter pub get
+      - name: Compilar
+        working-directory: app
+        run: |
+          ARGS="--release --dart-define-from-file=../env/${{ matrix.env }}.json \
+            --dart-define=APP_VERSION=$VERSION --build-name=$VERSION \
+            --build-number=${{ github.run_number }}"
+          flutter build appbundle $ARGS
+          flutter build apk $ARGS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-${{ matrix.env }}-${{ env.VERSION }}
+          path: |
+            app/build/app/outputs/bundle/release/*.aab
+            app/build/app/outputs/flutter-apk/*.apk
+      - name: Google Play (pista interna)
+        if: matrix.env == 'prod' && env.HAS_PLAY == 'true'
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: ${{ vars.ANDROID_PACKAGE_NAME }}
+          releaseFiles: app/build/app/outputs/bundle/release/app-release.aab
+          track: internal
+          status: draft
+
+  server-image:
+    needs: version
+    runs-on: ubuntu-latest
+    outputs:
+      image: ${{ steps.meta.outputs.image }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: meta
+        run: echo "image=ghcr.io/${GITHUB_REPOSITORY,,}/bastion-server" >> "$GITHUB_OUTPUT"
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: packages/server/Dockerfile
+          push: true
+          tags: |
+            ${{ steps.meta.outputs.image }}:${{ needs.version.outputs.name }}
+            ${{ steps.meta.outputs.image }}:latest
+
+  deploy-server:
+    needs: [version, server-image]
+    runs-on: ubuntu-latest
+    if: ${{ vars.DEPLOY_HOST != '' }}
+    environment: ${{ startsWith(github.ref, 'refs/tags/v') && 'prod' || inputs.env }}
+    steps:
+      - name: Desplegar por SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ vars.DEPLOY_HOST }}
+          username: ${{ vars.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: |
+            cd ${{ vars.DEPLOY_PATH || '~/bastion' }}
+            export BASTION_IMAGE=${{ needs.server-image.outputs.image }}:${{ needs.version.outputs.name }}
+            docker compose pull && docker compose up -d
+            sleep 3 && curl -fsS http://localhost:${BASTION_PORT:-8080}/health
+
+  github-release:
+    needs: [version, android]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/**/*
+          generate_release_notes: true

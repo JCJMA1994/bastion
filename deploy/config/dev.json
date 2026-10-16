@@ -1,0 +1,12 @@
+{
+  "multiplayer_enabled": true,
+  "quick_battle_enabled": true,
+  "poll_seconds": 2,
+  "telemetry_flush_seconds": 15,
+  "log_level": "debug",
+  "min_app_version": "0.1.0",
+  "maintenance_message": "",
+  "ai_use_orders": true,
+  "campaign_starting_requisas": 60,
+  "art_style": "sprites"
+}

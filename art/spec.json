@@ -1,0 +1,199 @@
+{
+  "version": 2,
+  "pxPerInch": 160,
+  "factions": [
+    "compania",
+    "columna"
+  ],
+  "troops": {
+    "capitana": {
+      "canvas": 256,
+      "states": [
+        "reposo",
+        "caida"
+      ]
+    },
+    "lanceros": {
+      "canvas": 256,
+      "states": [
+        "reposo",
+        "caida",
+        "disparo"
+      ]
+    },
+    "exploradores": {
+      "canvas": 256,
+      "states": [
+        "reposo",
+        "caida",
+        "disparo"
+      ]
+    },
+    "tiradores": {
+      "canvas": 256,
+      "states": [
+        "reposo",
+        "caida",
+        "disparo"
+      ]
+    },
+    "granaderos": {
+      "canvas": 256,
+      "states": [
+        "reposo",
+        "caida"
+      ]
+    },
+    "zapadores": {
+      "canvas": 256,
+      "states": [
+        "reposo",
+        "caida",
+        "disparo"
+      ]
+    },
+    "batidores": {
+      "canvas": 384,
+      "states": [
+        "reposo",
+        "caida"
+      ]
+    },
+    "canon": {
+      "canvas": 384,
+      "states": [
+        "reposo",
+        "disparo"
+      ]
+    }
+  },
+  "ground": {
+    "tierra": 1024
+  },
+  "scales": {
+    "1x": 0.25,
+    "2x": 0.5,
+    "4x": 1.0
+  },
+  "maxPage": 2048,
+  "terrain": {
+    "ruinas": {
+      "muro": [
+        2.0,
+        0.6
+      ],
+      "esquina": [
+        2.0,
+        2.0
+      ],
+      "escombros_1": [
+        1.0,
+        1.0
+      ],
+      "escombros_2": [
+        1.5,
+        1.5
+      ],
+      "escombros_3": [
+        1.0,
+        1.0
+      ],
+      "piso_alto": [
+        3.0,
+        3.0
+      ]
+    },
+    "bosque": {
+      "arbol_1": [
+        2.5,
+        2.5
+      ],
+      "arbol_2": [
+        2.5,
+        2.5
+      ],
+      "arbol_3": [
+        2.2,
+        2.2
+      ],
+      "arbol_4": [
+        2.8,
+        2.8
+      ],
+      "arbol_5": [
+        2.0,
+        2.0
+      ],
+      "arbusto_1": [
+        1.2,
+        1.2
+      ],
+      "arbusto_2": [
+        1.0,
+        1.0
+      ],
+      "arbusto_3": [
+        1.2,
+        1.2
+      ]
+    },
+    "crater": {
+      "crater_1": [
+        3.5,
+        3.5
+      ],
+      "crater_2": [
+        3.5,
+        3.5
+      ],
+      "crater_3": [
+        3.0,
+        3.0
+      ]
+    },
+    "muro_bajo": {
+      "tramo": [
+        1.0,
+        0.5
+      ],
+      "extremo": [
+        0.5,
+        0.5
+      ]
+    },
+    "parapeto": {
+      "sacos": [
+        3.0,
+        1.0
+      ]
+    },
+    "objetivo": {
+      "normal": [
+        1.0,
+        1.0
+      ],
+      "central": [
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "effects": {
+    "fogonazo": {
+      "frames": 4,
+      "canvas": 128
+    },
+    "humo": {
+      "frames": 6,
+      "canvas": 128
+    },
+    "impacto": {
+      "frames": 4,
+      "canvas": 128
+    },
+    "explosion": {
+      "frames": 8,
+      "canvas": 640
+    }
+  }
+}

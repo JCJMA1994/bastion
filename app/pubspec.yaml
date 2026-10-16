@@ -1,0 +1,42 @@
+name: bastion
+description: Bastión — wargame táctico de escaramuzas con campaña roguelike.
+publish_to: none
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.6.0
+  flutter: ">=3.32.0"
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  audioplayers: ^6.1.0
+  flame: ^1.18.0
+  # API posicional (initialize/show). La 22 pasó a parámetros con nombre.
+  flutter_local_notifications: ">=19.0.0 <22.0.0"
+  flutter_svg: ^2.0.10
+  google_fonts: ^6.2.1
+  http: ^1.2.2
+  shared_preferences: ^2.3.2
+  workmanager: ^0.10.1
+  rules_engine:
+    path: ../packages/rules_engine
+
+dev_dependencies:
+  bastion_server:
+    path: ../packages/server
+  flutter_test:
+    sdk: flutter
+  shelf: ^1.4.2
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/data/
+    - assets/audio/
+    - assets/config/
+    - assets/art/
+    - assets/art/ground/

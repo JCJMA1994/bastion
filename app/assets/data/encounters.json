@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "encounters": [
+    {"id": "desertores", "titulo": "Desertores en el camino",
+     "texto": "Tres soldados sin bandera ofrecen un mapa de las patrullas enemigas. Piden comida.",
+     "opciones": [
+       {"texto": "Pagarles (−20 requisas)", "efectos": [{"tipo": "requisas", "cantidad": -20}, {"tipo": "orden"}]},
+       {"texto": "Seguir la marcha", "efectos": []}
+     ]},
+    {"id": "granja", "titulo": "Granja abandonada",
+     "texto": "Las puertas están abiertas y el granero sigue lleno. Demasiado fácil.",
+     "opciones": [
+       {"texto": "Registrarla", "efectos": [{"tipo": "azar",
+         "exito": [{"tipo": "requisas", "cantidad": 30}],
+         "fallo": [{"tipo": "bajas", "cantidad": 1}]}]},
+       {"texto": "Acampar y descansar", "efectos": [{"tipo": "curar"}]}
+     ]},
+    {"id": "sargento", "titulo": "Un viejo sargento",
+     "texto": "Un veterano de otra guerra se ofrece a contar lo que sabe. Habla mucho.",
+     "opciones": [
+       {"texto": "Escucharlo toda la noche", "efectos": [{"tipo": "experiencia", "cantidad": 2}]},
+       {"texto": "Comprarle sus provisiones (+10 requisas)", "efectos": [{"tipo": "requisas", "cantidad": 10}]}
+     ]},
+    {"id": "atajo", "titulo": "Huellas recientes",
+     "texto": "Un atajo por el barranco ahorra medio día. Las huellas no son vuestras.",
+     "opciones": [
+       {"texto": "Tomar el atajo", "efectos": [{"tipo": "azar",
+         "exito": [{"tipo": "requisas", "cantidad": 20}, {"tipo": "orden"}],
+         "fallo": [{"tipo": "bajas", "cantidad": 2}]}]},
+       {"texto": "Rodear el valle", "efectos": []}
+     ]}
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "nota": "Todas las órdenes se juegan durante una activación propia. Las reactivas se preparan en una escuadra y se consumen al usarse.",
+  "orders": [
+    {"id": "repetid", "nombre": "¡Repetid!", "pm": 1, "objetivo": "activa", "efecto": "En el próximo ataque de esta activación, repite el primer dado de impactar fallido."},
+    {"id": "avance_forzado", "nombre": "Avance forzado", "pm": 1, "objetivo": "activa", "efecto": "Antes de mover: la escuadra puede mover 3\" más esta activación."},
+    {"id": "cuerpo_a_tierra", "nombre": "Cuerpo a tierra", "pm": 1, "objetivo": "propia", "efecto": "Prepara una escuadra: +1 a la salvación contra el siguiente ataque a distancia que reciba antes de su próxima activación."},
+    {"id": "arenga", "nombre": "Arenga", "pm": 1, "objetivo": "propia_desmoralizada", "efecto": "Una escuadra propia deja de estar Desmoralizada."},
+    {"id": "fuego_cobertura", "nombre": "Fuego de cobertura", "pm": 1, "objetivo": "activa", "efecto": "Si el próximo disparo de esta activación impacta, el objetivo tiene -2\" de MOV en su próxima activación."},
+    {"id": "contraataque", "nombre": "Contraataque", "pm": 2, "objetivo": "propia", "efecto": "Prepara una escuadra: si la cargan antes de su próxima activación, golpea primero."},
+    {"id": "fuego_concentrado", "nombre": "Fuego concentrado", "pm": 2, "objetivo": "activa", "efecto": "+1 a herir en el próximo disparo si el objetivo ya recibió disparos esta ronda."},
+    {"id": "doble_paso", "nombre": "Doble paso", "pm": 2, "objetivo": "activa", "efecto": "Al terminar esta activación, activas otra escuadra tuya enseguida."}
+  ]
+}

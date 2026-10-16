@@ -1,0 +1,13 @@
+name: rules_engine
+description: Motor de reglas de Bastión. Dart puro, determinista, sin dependencias de Flutter.
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.6.0
+
+resolution: workspace
+
+dev_dependencies:
+  lints: ^5.0.0
+  test: ^1.25.0

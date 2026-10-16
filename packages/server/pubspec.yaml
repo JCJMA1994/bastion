@@ -1,0 +1,19 @@
+name: bastion_server
+description: Servidor autoritativo de partidas multijugador asíncronas de Bastión.
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.6.0
+
+resolution: workspace
+
+dependencies:
+  rules_engine:
+    path: ../rules_engine
+  shelf: ^1.4.2
+  shelf_router: ^1.1.4
+
+dev_dependencies:
+  lints: ^5.0.0
+  test: ^1.25.0

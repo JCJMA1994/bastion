@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "maps": [
+    {"id": "molino", "nombre": "Asalto al molino", "mision": "dominio", "ancho": 44, "alto": 28,
+     "terreno": [
+       {"id": "molino", "tipo": "ruinas", "rect": [16, 3, 8, 6], "piso": true,
+        "decoracion": [
+          {"pieza": "ruinas/piso_alto", "x": 20, "y": 6, "escala": 1.8},
+          {"pieza": "ruinas/esquina", "x": 17, "y": 4},
+          {"pieza": "ruinas/muro", "x": 21.5, "y": 8.6},
+          {"pieza": "ruinas/escombros_2", "x": 23, "y": 4, "rot": 30}
+        ]},
+       {"id": "granero", "tipo": "ruinas", "rect": [20, 19, 8, 6]},
+       {"id": "soto", "tipo": "bosque", "rect": [10, 15, 6, 5]},
+       {"id": "arboleda", "tipo": "bosque", "rect": [27, 8, 6, 5]},
+       {"id": "tapia", "tipo": "muroBajo", "rect": [24, 12, 1, 4]}
+     ],
+     "objetivos": [
+       {"id": "o1", "x": 5, "y": 4}, {"id": "o2", "x": 5, "y": 24},
+       {"id": "o3", "x": 22, "y": 14, "valor": 2},
+       {"id": "o4", "x": 39, "y": 4}, {"id": "o5", "x": 39, "y": 24}
+     ]},
+    {"id": "vado", "nombre": "Vado del Sauce", "mision": "defensa_vado", "ancho": 44, "alto": 28,
+     "terreno": [
+       {"id": "orilla_norte", "tipo": "bosque", "rect": [18, 0, 8, 9]},
+       {"id": "orilla_sur", "tipo": "bosque", "rect": [18, 19, 8, 9]},
+       {"id": "caseta", "tipo": "ruinas", "rect": [12, 12, 4, 4], "piso": true},
+       {"id": "pretil", "tipo": "muroBajo", "rect": [27, 12, 1, 4]}
+     ],
+     "objetivos": [
+       {"id": "puente", "x": 22, "y": 14}
+     ]},
+    {"id": "llanura", "nombre": "Llanura de Corvo", "mision": "reconocimiento", "ancho": 44, "alto": 28,
+     "terreno": [
+       {"id": "crater_1", "tipo": "crater", "rect": [12, 6, 4, 4]},
+       {"id": "crater_2", "tipo": "crater", "rect": [28, 18, 4, 4]},
+       {"id": "muro_norte", "tipo": "muroBajo", "rect": [21, 4, 1, 5]},
+       {"id": "muro_sur", "tipo": "muroBajo", "rect": [21, 19, 1, 5]},
+       {"id": "ermita", "tipo": "ruinas", "rect": [17, 11, 4, 6], "piso": true}
+     ],
+     "objetivos": [
+       {"id": "o1", "x": 12, "y": 22}, {"id": "o2", "x": 16, "y": 4},
+       {"id": "o3", "x": 26, "y": 14},
+       {"id": "o4", "x": 30, "y": 6}, {"id": "o5", "x": 32, "y": 24}
+     ]}
+  ]
+}

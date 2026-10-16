@@ -1,0 +1,203 @@
+{
+  "version": 2,
+  "pxPerInch": {
+    "1x": 40.0,
+    "2x": 80.0,
+    "4x": 160.0
+  },
+  "factions": [
+    "compania",
+    "columna"
+  ],
+  "troops": {
+    "capitana": [
+      "reposo",
+      "caida"
+    ],
+    "lanceros": [
+      "reposo",
+      "caida",
+      "disparo"
+    ],
+    "exploradores": [
+      "reposo",
+      "caida",
+      "disparo"
+    ],
+    "tiradores": [
+      "reposo",
+      "caida",
+      "disparo"
+    ],
+    "granaderos": [
+      "reposo",
+      "caida"
+    ],
+    "zapadores": [
+      "reposo",
+      "caida",
+      "disparo"
+    ],
+    "batidores": [
+      "reposo",
+      "caida"
+    ],
+    "canon": [
+      "reposo",
+      "disparo"
+    ]
+  },
+  "terrain": {
+    "ruinas": {
+      "muro": [
+        2.0,
+        0.6
+      ],
+      "esquina": [
+        2.0,
+        2.0
+      ],
+      "escombros_1": [
+        1.0,
+        1.0
+      ],
+      "escombros_2": [
+        1.5,
+        1.5
+      ],
+      "escombros_3": [
+        1.0,
+        1.0
+      ],
+      "piso_alto": [
+        3.0,
+        3.0
+      ]
+    },
+    "bosque": {
+      "arbol_1": [
+        2.5,
+        2.5
+      ],
+      "arbol_2": [
+        2.5,
+        2.5
+      ],
+      "arbol_3": [
+        2.2,
+        2.2
+      ],
+      "arbol_4": [
+        2.8,
+        2.8
+      ],
+      "arbol_5": [
+        2.0,
+        2.0
+      ],
+      "arbusto_1": [
+        1.2,
+        1.2
+      ],
+      "arbusto_2": [
+        1.0,
+        1.0
+      ],
+      "arbusto_3": [
+        1.2,
+        1.2
+      ]
+    },
+    "crater": {
+      "crater_1": [
+        3.5,
+        3.5
+      ],
+      "crater_2": [
+        3.5,
+        3.5
+      ],
+      "crater_3": [
+        3.0,
+        3.0
+      ]
+    },
+    "muro_bajo": {
+      "tramo": [
+        1.0,
+        0.5
+      ],
+      "extremo": [
+        0.5,
+        0.5
+      ]
+    },
+    "parapeto": {
+      "sacos": [
+        3.0,
+        1.0
+      ]
+    },
+    "objetivo": {
+      "normal": [
+        1.0,
+        1.0
+      ],
+      "central": [
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "effects": {
+    "fogonazo": 4,
+    "humo": 6,
+    "impacto": 4,
+    "explosion": 8
+  },
+  "atlases": {
+    "troops": {
+      "1x": [
+        "troops@1x_0.json"
+      ],
+      "2x": [
+        "troops@2x_0.json"
+      ],
+      "4x": [
+        "troops@4x_0.json",
+        "troops@4x_1.json",
+        "troops@4x_2.json"
+      ]
+    },
+    "terrain": {
+      "1x": [
+        "terrain@1x_0.json"
+      ],
+      "2x": [
+        "terrain@2x_0.json"
+      ],
+      "4x": [
+        "terrain@4x_0.json"
+      ]
+    },
+    "effects": {
+      "1x": [
+        "effects@1x_0.json"
+      ],
+      "2x": [
+        "effects@2x_0.json"
+      ],
+      "4x": [
+        "effects@4x_0.json",
+        "effects@4x_1.json"
+      ]
+    }
+  },
+  "ground": {
+    "tierra": {
+      "1x": "ground/tierra@1x.webp",
+      "2x": "ground/tierra@2x.webp",
+      "4x": "ground/tierra@4x.webp"
+    }
+  }
+}

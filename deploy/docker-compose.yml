@@ -1,0 +1,19 @@
+# Despliegue del servidor en un host con Docker.
+#   cp .env.example .env   # y rellena los valores
+#   docker compose up -d
+services:
+  bastion:
+    image: ${BASTION_IMAGE:-ghcr.io/OWNER/REPO/bastion-server:latest}
+    restart: unless-stopped
+    ports:
+      - "${BASTION_PORT:-8080}:8080"
+    environment:
+      BASTION_ADMIN_TOKEN: ${BASTION_ADMIN_TOKEN}
+      BASTION_WEBHOOK: ${BASTION_WEBHOOK:-}
+    volumes:
+      - bastion-data:/var/bastion
+      # Configuración remota editable sin reconstruir la imagen.
+      - ./config:/app/config:ro
+
+volumes:
+  bastion-data:

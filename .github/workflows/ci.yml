@@ -1,0 +1,93 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Dependencias del workspace
+        run: flutter pub get
+
+      - name: Motor de reglas
+        working-directory: packages/rules_engine
+        run: |
+          dart analyze
+          dart test
+
+      - name: Servidor
+        working-directory: packages/server
+        run: |
+          dart analyze
+          dart test
+
+      - name: Arte
+        run: |
+          pip install --quiet pillow
+          python3 tool/art/check_art.py
+
+      - name: App
+        working-directory: app
+        # Las capturas (golden) se comparan aparte: dependen del sistema.
+        run: |
+          flutter analyze
+          flutter test --exclude-tags golden
+          if ls test/goldens/*.png >/dev/null 2>&1; then
+            flutter test --tags golden
+          fi
+
+  server-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: La imagen del servidor compila
+        run: docker build -f packages/server/Dockerfile -t bastion-server:ci .
+
+  balance:
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - name: Simulador y modelo
+        run: |
+          mkdir -p build/balance
+          python3 tool/balance_model.py data/units.json > build/balance/modelo.txt
+          cd packages/rules_engine
+          dart run bin/simulate.dart duelos --batallas 150 --json ../../build/balance/duelos.json > ../../build/balance/duelos.txt
+          dart run bin/simulate.dart campana --campanas 100 > ../../build/balance/campana.txt
+          dart run bin/simulate.dart ordenes --batallas 60 > ../../build/balance/ordenes.txt
+      - name: Comprobación de rangos
+        # Avisa sin bloquear mientras se ajusta el balance; quitar
+        # continue-on-error para hacerlo obligatorio.
+        continue-on-error: true
+        run: python3 tool/check_balance.py build/balance/duelos.json
+      - name: Resumen
+        if: always()
+        run: |
+          {
+            echo '## Balance'
+            echo '```'
+            cat build/balance/modelo.txt
+            echo
+            cat build/balance/duelos.txt
+            echo
+            cat build/balance/campana.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: balance
+          path: build/balance/

@@ -1,0 +1,58 @@
+{
+  "version": 2,
+  "profiles": [
+    {"id": "capitana", "nombre": "Capitana", "rol": "mando", "soldados": 1, "unica": true, "coste": null,
+     "stats": {"mov": 6, "pun": 3, "res": 3, "sal": 4, "her": 3, "mor": 8},
+     "armas": [
+       {"id": "pistola", "nombre": "Pistola", "alcance": 12, "a": 2, "f": 3, "pa": 0, "d": 1},
+       {"id": "sable", "nombre": "Sable", "alcance": 0, "impacta": 3, "a": 3, "f": 4, "pa": 1, "d": 1}
+     ],
+     "habilidades": ["voz_de_mando"]},
+    {"id": "lanceros", "nombre": "Lanceros", "rol": "linea", "soldados": 5, "coste": 30,
+     "stats": {"mov": 6, "pun": 4, "res": 3, "sal": 5, "her": 1, "mor": 7},
+     "armas": [
+       {"id": "fusil_cerrojo", "nombre": "Fusil de cerrojo", "alcance": 24, "a": 1, "f": 3, "pa": 0, "d": 1},
+       {"id": "bayoneta", "nombre": "Bayoneta", "alcance": 0, "impacta": 4, "a": 1, "f": 3, "pa": 0, "d": 1}
+     ],
+     "habilidades": ["firmes"]},
+    {"id": "exploradores", "nombre": "Exploradores", "rol": "linea", "soldados": 4, "coste": 30,
+     "stats": {"mov": 8, "pun": 4, "res": 3, "sal": 6, "her": 1, "mor": 6},
+     "armas": [
+       {"id": "carabina", "nombre": "Carabina", "alcance": 20, "a": 2, "f": 3, "pa": 0, "d": 1},
+       {"id": "cuchillo", "nombre": "Cuchillo", "alcance": 0, "impacta": 4, "a": 1, "f": 3, "pa": 0, "d": 1}
+     ],
+     "habilidades": ["infiltracion"]},
+    {"id": "tiradores", "nombre": "Tiradores", "rol": "apoyo", "soldados": 5, "coste": 45,
+     "stats": {"mov": 6, "pun": 3, "res": 3, "sal": 6, "her": 1, "mor": 6},
+     "armas": [
+       {"id": "fusil_precision", "nombre": "Fusil de precisión", "alcance": 30, "a": 1, "f": 4, "pa": 1, "d": 1}
+     ],
+     "habilidades": ["ojo_de_halcon"]},
+    {"id": "granaderos", "nombre": "Granaderos", "rol": "asalto", "soldados": 4, "coste": 45,
+     "stats": {"mov": 6, "pun": 4, "res": 4, "sal": 5, "her": 1, "mor": 7},
+     "armas": [
+       {"id": "granadas", "nombre": "Granadas", "alcance": 8, "a": 2, "f": 4, "pa": 1, "d": 1},
+       {"id": "hacha", "nombre": "Hacha", "alcance": 0, "impacta": 3, "a": 2, "f": 4, "pa": 1, "d": 1}
+     ],
+     "habilidades": ["asalto"]},
+    {"id": "zapadores", "nombre": "Zapadores", "rol": "apoyo", "soldados": 3, "coste": 45,
+     "stats": {"mov": 5, "pun": 4, "res": 4, "sal": 4, "her": 1, "mor": 7},
+     "armas": [
+       {"id": "lanzallamas", "nombre": "Lanzallamas", "alcance": 8, "a": 2, "f": 4, "pa": 1, "d": 1, "modo": "automatico"}
+     ],
+     "habilidades": ["fortificar"]},
+    {"id": "batidores", "nombre": "Batidores", "rol": "caballeria", "soldados": 3, "coste": 45,
+     "stats": {"mov": 10, "pun": 5, "res": 4, "sal": 5, "her": 2, "mor": 7},
+     "armas": [
+       {"id": "sable_carga", "nombre": "Sable de carga", "alcance": 0, "impacta": 4, "a": 2, "f": 4, "pa": 1, "d": 1},
+       {"id": "pistola_batidor", "nombre": "Pistola", "alcance": 12, "a": 1, "f": 3, "pa": 0, "d": 1}
+     ],
+     "habilidades": ["carga_devastadora"]},
+    {"id": "canon", "nombre": "Cañón de campaña", "rol": "artilleria", "soldados": 1, "coste": 60,
+     "stats": {"mov": 3, "pun": 4, "res": 6, "sal": 4, "her": 3, "mor": 7},
+     "armas": [
+       {"id": "canon", "nombre": "Cañón", "alcance": 36, "a": 1, "f": 6, "pa": 2, "d": 2, "modo": "dispersion"}
+     ],
+     "habilidades": ["disparo_dispersion"]}
+  ]
+}
