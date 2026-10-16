@@ -47,6 +47,9 @@
             "name": "server",
             "cwd": "packages\\server",
             "program": "bin/server.dart",
+            "env": {
+                "BASTION_ADMIN_TOKEN": "bastion-admin-token-local-dev-12345"
+            },
             "request": "launch",
             "type": "dart"
         }
